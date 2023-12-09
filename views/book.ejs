@@ -1,0 +1,79 @@
+<!-- book.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Book Album</title>
+    <style>
+        /* Add some basic styling for the book album */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .book-album {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .book-card {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-cover {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .add-book-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .add-book-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="full">
+    <%-include("../views/partials/header.ejs")%>
+    <h1>My Book Album</h1>
+
+    <a class="add-book-btn" href="/add-book">Add Book</a>
+
+    <div class="book-album">
+        <% books.forEach(book => { %>
+            <div class="book-card">
+                <img class="book-cover" src="<%=book.coverUrl%>" alt="Book Cover">
+                <h3><%= book.title %></h3>
+                <p><%= book.abstract %></p>
+            </div>
+        <% }); %>
+    </div>
+    <%-include("../views/partials/footer.ejs")%>
+</div>
+</body>
+</html>
